@@ -45,10 +45,10 @@ T{ BEGIN-STRUCTURE STRCT2
 
 T{ STRCT2 -> 3 chars 1 cells + }T   \ +FIELD doesn't align
 T{ 0 F21 -> 0 }T
-T{ 0 F22 -> 1 }T
-T{ 0 F23 -> 3 }T
-T{ 0 F24 -> 3 }T
-T{ 5 F23 -> 8 }T
+T{ 0 F22 -> 1 CHARS }T
+T{ 0 F23 -> 3 CHARS }T
+T{ 0 F24 -> 3 CHARS }T
+T{ 5 F23 -> 5 3 CHARS + }T
 
 T{ CREATE S21 STRCT2 ALLOT -> }T
 T{ 11 S21 F21 C! -> }T
