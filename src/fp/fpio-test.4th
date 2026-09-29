@@ -68,12 +68,30 @@ HEX
 
 1 FLOATS constant SYSTEM_PREC
 
-\ The following definitions are taken from the reference implementation 
-\ of the memory access words Rfd (v. 20100621), for Forth 200x.
+\ Sloth addresses are byte offsets, so BYTES advances one byte at a
+\ time. B@ and B! are built from the char-wide C@/C!: when a char is
+\ more than one byte, the addressed byte is extracted from (or merged
+\ back into) the containing char with bit logic. The byte at the lower
+\ address is the high byte of the char (the VM's char byte order
+\ matches its cell byte order). This works for both suCHAR=1 and
+\ suCHAR=2.
+: BYTES ( n1 -- n2 ) ;
 
-: B!    ( x addr --    ) SWAP FF AND SWAP C! ;
-: B@    (   addr -- x  ) C@ FF AND ;
-: BYTES CHARS ( n1 -- n2 ) ;
+: B@ ( addr -- x )
+  1 CHARS 1 = IF
+    C@ FF AND
+  ELSE
+    C@ 8 RSHIFT FF AND
+  THEN ;
+
+: B! ( x addr -- )
+  1 CHARS 1 = IF
+    SWAP FF AND SWAP C!
+  ELSE
+    SWAP FF AND 8 LSHIFT
+    OVER C@ FF AND OR
+    SWAP C!
+  THEN ;
 
 : b@+ ( x1 addr1 -- x2 addr2 )  SWAP 8 LSHIFT OVER B@ + SWAP 1 BYTES + ;
 : b@- ( x1 addr1 -- x2 addr2 )  1 BYTES - DUP B@ ROT 8 LSHIFT + SWAP ;

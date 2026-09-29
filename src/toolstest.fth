@@ -275,12 +275,12 @@ T{ : SYN3 SYN2 LITERAL ; SYN3 -> 2345 }T
 
 \? : >UPPERCASE  ( caddr u  -- caddr2 u2 )
 \?    32 MIN DUP >R UCBUF DUP 2SWAP
-\?    OVER + SWAP 2DUP U>
+\?    CHARS OVER + SWAP 2DUP U>
 \?    IF
 \?       DO          \ ?DO can't be used, as it is a Core Extension word
 \?          I C@ DUP [CHAR] a [CHAR] z 1+ WITHIN IF 32 INVERT AND THEN
 \?          OVER C! CHAR+
-\?       LOOP
+\?       1 CHARS +LOOP
 \?    ELSE
 \?       2DROP
 \?    THEN

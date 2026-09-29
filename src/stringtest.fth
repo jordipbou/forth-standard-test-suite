@@ -68,7 +68,7 @@ T{ S10 -TRAILING -> S10 1- }T
 \ ------------------------------------------------------------------------------
 TESTING /STRING
 
-T{ S1  5 /STRING -> S1 SWAP 5 + SWAP 5 - }T
+T{ S1  5 /STRING -> S1 SWAP 5 CHARS + SWAP 5 - }T
 T{ S1 10 /STRING -4 /STRING -> S1 6 /STRING }T
 T{ S1  0 /STRING -> S1 }T
 
