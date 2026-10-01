@@ -17,8 +17,7 @@ S" errorreport.fth" INCLUDED
 S" coreexttest.fth" INCLUDED
 \ blocktest.fth skipped: Sloth does not implement the optional Block word set
 \ S" blocktest.fth" INCLUDED
-\ doubletest.fth skipped: Sloth does not implement 2LITERAL
-\ S" doubletest.fth" INCLUDED
+S" doubletest.fth" INCLUDED
 S" exceptiontest.fth" INCLUDED
 S" facilitytest.fth" INCLUDED
 S" filetest.fth" INCLUDED
